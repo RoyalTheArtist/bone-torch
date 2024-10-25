@@ -1,5 +1,5 @@
-import { Entity } from "@/engine/ecs"
-import { GraphicObject } from "@/engine/graphics"
+import { Entity } from "bt-engine/ecs"
+import { GraphicObject } from "bt-engine/graphics"
 import { IInitialize } from "bt-engine"
 import { Color, Vector2D } from "bt-engine/utils"
 

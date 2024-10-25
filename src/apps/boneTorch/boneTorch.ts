@@ -1,10 +1,10 @@
 import '@/style.scss'
 
 import { Viewport, Surface } from '@/render'
-import { Engine } from '@/engine'
+import { Engine } from 'bt-engine'
 import { MainMenuScreen } from './screens'
 import { Vector2D } from 'bt-engine/utils'
-import { AssetManager } from '@/engine/assets';
+import { AssetManager } from 'bt-engine/assets';
 import { App } from '../app.base'
 
 

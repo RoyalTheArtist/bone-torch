@@ -1,7 +1,7 @@
 import { BaseScreen } from "bt-engine/screen.base"
 import { GameScreen } from "../gameScreen/game.screen"
 
-import { InputManager } from "@/engine/input"
+import { InputManager } from "bt-engine/input"
 import { SurfaceLayer } from "@/render"
 import { Color, Vector2D } from "bt-engine/utils"
 

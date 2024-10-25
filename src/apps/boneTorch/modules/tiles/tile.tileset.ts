@@ -1,5 +1,5 @@
-import { ISpriteSheetData, SpriteSheet } from "@/engine/graphics";
-import { IInitialize } from "@/engine";
+import { ISpriteSheetData, SpriteSheet } from "bt-engine/graphics";
+import { IInitialize } from "bt-engine";
 import { Tile } from ".";
 
 export interface ITileSetData {

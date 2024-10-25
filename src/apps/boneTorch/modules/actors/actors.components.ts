@@ -9,7 +9,7 @@ import { GraphicObject, RenderComponent, Sprite } from 'bt-engine/graphics'
 
 import { Item } from "bone-torch/modules/items"
 import { Position } from "bone-torch/components"
-import { AssetManager } from "@/engine/assets"
+import { AssetManager } from "bt-engine/assets"
 
 
 

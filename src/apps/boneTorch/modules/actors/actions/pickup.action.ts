@@ -1,6 +1,6 @@
 import { Action } from "./moveActions"
 
-import { Entity } from "@/engine/ecs"
+import { Entity } from "bt-engine/ecs"
 import { ImpossibleException } from "bt-engine/utils/exceptions"
 import { Actor, Inventory } from "@/apps/boneTorch/modules/actors"
 

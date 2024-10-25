@@ -1,4 +1,4 @@
-import { Component } from "@/engine/ecs";
+import { Component } from "bt-engine/ecs";
 import { Vector2D } from "bt-engine/utils";
 
 export class Position extends Component {

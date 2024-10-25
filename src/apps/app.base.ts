@@ -1,4 +1,4 @@
-import { IInitialize, IStart } from "@/engine";
+import { IInitialize, IStart } from "bt-engine";
 
 export abstract class App implements IInitialize, IStart { 
     initialize(): void {}
