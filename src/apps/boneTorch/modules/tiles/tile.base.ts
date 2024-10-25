@@ -1,7 +1,7 @@
 import { TileAppearance } from "./tile.components"
 
 import { Entity } from "bt-engine/ecs"
-import { IInitialize } from "@/engine"
+import { IInitialize } from "bt-engine"
 import { Vector2D } from "bt-engine/utils"
 
 export class TileObject extends Entity implements IInitialize, Tile {

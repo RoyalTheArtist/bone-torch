@@ -1,5 +1,5 @@
 import { GraphicObject } from "bt-engine/graphics"
-import { SurfaceLayer } from "@/render"
+import { SurfaceLayer } from "../../../../../bt-engine/render"
 import { Entity } from "bt-engine/ecs"
 import { RenderAnimation } from "bt-engine/graphics/animations"
 import { Vector2D } from "bt-engine/utils"

@@ -1,0 +1,3 @@
+[submodule "bt-engine"]
+	path = bt-engine
+	url = git@github.com:RoyalTheArtist/bt-engine.git

@@ -1,4 +1,4 @@
-import { Component } from "@/engine/ecs"
+import { Component } from "bt-engine/ecs"
 import { Action, NoAction } from "./actions"
 import { Actor } from "./actors"
 
