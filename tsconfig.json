@@ -19,7 +19,7 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "paths": {
-      "@/*": ["./src/*"],
+      "@/*": ["./src/apps/*"],
       "bt-engine/*": ["./bt-engine/*"],
       "bt-engine": ["./bt-engine"],
       "bone-torch/*": ["./src/apps/boneTorch/*"],

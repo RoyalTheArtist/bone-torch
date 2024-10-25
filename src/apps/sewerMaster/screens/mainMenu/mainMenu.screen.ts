@@ -1,11 +1,12 @@
-import { BaseScreen } from "bt-engine/screen.base"
-import { GameScreen } from "../gameScreen/game.screen"
+
+import { GameScreen } from "../gameScreen"
 
 import { InputManager } from "bt-engine/input"
-import { SurfaceLayer } from "../../../../../bt-engine/render"
+import { SurfaceLayer } from "bt-engine/render"
+import { BaseScreen } from "bt-engine/screen.base"
 import { Color, Vector2D } from "bt-engine/utils"
 
-import { Settings } from "bone-torch"
+import { Settings } from "@/sewerMaster/settings"
 
 export class MainMenuScreen extends BaseScreen {
     initialize() {
