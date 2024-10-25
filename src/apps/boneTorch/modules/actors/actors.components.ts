@@ -1,7 +1,7 @@
 
 import { Actor } from "./actors"
 
-import { SurfaceLayer } from "@/render"
+import { SurfaceLayer } from "../../../../../bt-engine/render"
 
 import { Component } from "bt-engine/ecs"
 import { Vector2D } from "bt-engine/utils"

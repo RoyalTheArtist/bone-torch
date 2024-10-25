@@ -3,7 +3,7 @@ import { Appearance, TileObject } from "./tile.base"
 import { Component } from "bt-engine/ecs"
 import { AssetManager } from "bt-engine/assets"
 
-import { SurfaceLayer } from "@/render"
+import { SurfaceLayer } from "../../../../../bt-engine/render"
 import { Vector2D } from "bt-engine/utils"
 import { RenderComponent } from "bt-engine/graphics"
 
