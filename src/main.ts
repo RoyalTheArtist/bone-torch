@@ -1,4 +1,4 @@
-import { BoneTorch } from "./apps/boneTorch"
+import { BoneTorch } from "./apps/sewerMaster"
 function main() {
     const game = new BoneTorch()
 
