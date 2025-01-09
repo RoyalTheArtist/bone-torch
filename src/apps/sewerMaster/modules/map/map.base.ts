@@ -1,7 +1,7 @@
 import { Entity } from "bt-engine/ecs"
 import { IInitialize } from "bt-engine"
 
-import { Tile, TileManager } from "bone-torch/modules/tiles"
+import { Tile, TileManager } from "sewerMaster/modules/tiles"
 import { Vector2D } from "bt-engine/utils"
 
 export interface IMapData {

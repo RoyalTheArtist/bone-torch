@@ -1,7 +1,7 @@
 import { Entity } from "bt-engine/ecs"
 
 import { Vector2D, ImpossibleException } from "bt-engine/utils"
-import { Actor } from "bone-torch/modules/actors"
+import { Actor } from "sewerMaster/modules/actors"
 import { PlayerMoveAnimation, RenderAnimation } from "bt-engine/graphics/animations/animations"
 
 export abstract class Action {

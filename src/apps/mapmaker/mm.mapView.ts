@@ -1,10 +1,10 @@
 import { Vector2D } from 'bt-engine/utils/vectors';
 import { Viewport, Surface } from "../../../bt-engine/render"
-import { Blank_Tile, GameMap } from "@/apps/boneTorch/modules/map"
-import { Tile } from "@/modules/tiles"
+import { Blank_Tile, GameMap } from "sewerMaster/modules/map"
+import { Tile } from "../sewerMaster/modules/tiles"
 import { App, } from "../app.base"
 import { MapMaker } from "./mapmaker"
-import { MouseHandler } from "../../engine/input/mouse"
+import { MouseHandler } from "bt-engine/input/mouse"
 import { TileSet } from "../../assetManager/tiles"
 
 

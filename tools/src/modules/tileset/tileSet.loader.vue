@@ -1,8 +1,18 @@
 <script setup lang="ts">
 import FileInput from '@/components/fileInput.vue'
+import { getFileInputAs } from '@/utils/files';
+import { AssetManager } from 'bt-engine/assets';
 
-const onChange = (event) => {
+const handleLoad = async (elem: HTMLInputElement) => {
+    const tileSetData = await getFileInputAs(elem);
+    return tileSetData
+}
+
+const onChange = async (event: Event) => {
     console.info(event)
+    const load = await handleLoad(event.target as HTMLInputElement)
+    console.log(load)
+    const spriteSheet = AssetManager.loadSpritesheet(load.value.spritesheet.resource)
 }
 </script>
 

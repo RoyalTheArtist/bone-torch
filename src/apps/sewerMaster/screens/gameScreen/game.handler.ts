@@ -1,9 +1,9 @@
-import { Action, MoveAction } from "@/apps/boneTorch/modules/actors"
+import { Action, MoveAction } from "sewerMaster/modules/actors"
 import { StandardGameInput } from "bt-engine/input"
 import { Vector2D } from "bt-engine/utils"
 
 import { InputHandler } from "bt-engine"
-import { Player } from "@/apps/boneTorch/player"
+import { Player } from "sewerMaster/player"
 
 export class GameInputHandler extends InputHandler { 
     handleInput(input: StandardGameInput): Action | null {

@@ -6,7 +6,7 @@ import { SurfaceLayer } from "bt-engine/render"
 import { BaseScreen } from "bt-engine/screen.base"
 import { Color, Vector2D } from "bt-engine/utils"
 
-import { Settings } from "@/sewerMaster/settings"
+import { Settings } from "sewerMaster/settings"
 
 export class MainMenuScreen extends BaseScreen {
     initialize() {

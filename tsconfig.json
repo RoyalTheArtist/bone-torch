@@ -20,10 +20,11 @@
     "noFallthroughCasesInSwitch": true,
     "paths": {
       "@/*": ["./src/apps/*"],
+      "@tools/*": ["./tools/src/*"],
       "bt-engine/*": ["./bt-engine/*"],
       "bt-engine": ["./bt-engine"],
-      "bone-torch/*": ["./src/apps/boneTorch/*"],
-      "bone-torch": ["./src/apps/boneTorch"],
+      "sewerMaster/*": ["./src/apps/sewerMaster/*"],
+      "sewerMaster": ["./src/apps/sewerMaster"],
     }
   },
   "include": ["src", "vite.config.ts", "bt-engine/render"]

@@ -9,7 +9,7 @@ import { App } from '../app.base'
 
 
 //TileSetManager.buildManifest('sewers',sewerTileset)
-AssetManager.baseUrl = 'src/apps/boneTorch/'
+AssetManager.baseUrl = 'src/apps/sewerMaster/'
 AssetManager.loadSpritesheet('data/sewers.sprites.json')
 AssetManager.loadSpritesheetManifest('data/spritesheets.json')
 

@@ -1,10 +1,10 @@
 
 import { Entity } from "bt-engine/ecs";
 import { Vector2D } from "bt-engine/utils";
-import { GameMap } from "bone-torch/modules/map";
-import { Settings } from "bone-torch/settings";
-import { Position } from "bone-torch/components";
-import { MoveSpriteAnimation } from "bone-torch/modules/animations";
+import { GameMap } from "sewerMaster/modules/map";
+import { Settings } from "sewerMaster/settings";
+import { Position } from "sewerMaster/components";
+import { MoveSpriteAnimation } from "sewerMaster/modules/animations";
 
 import { Inventory } from "./actors.components";
 import { AnimationManager } from "bt-engine/graphics/animations";

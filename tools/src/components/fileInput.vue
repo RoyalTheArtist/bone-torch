@@ -38,7 +38,7 @@ const handleLoad = async (elem: HTMLInputElement) => {
     <label for="input-file">
         <input type="text" name="input-file" readonly :value="file?.name" :placeholder="`${$attrs['placeholder'] || ''}`" @click="onBrowse">
     </label>
-    <input type="file" ref="loadTiles" class="hidden" :accept="`${$attrs['accept']}`" @change="onChange">
+    <input type="file" ref="loadTiles" class="hidden" :accept="`${$attrs['accept']}`" @change="$attrs.onChange">
    
 </template>
 

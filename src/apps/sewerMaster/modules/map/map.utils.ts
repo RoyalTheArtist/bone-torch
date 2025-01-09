@@ -2,7 +2,7 @@
 import { GameMap, IMapData } from "./map.base"
 
 import { Vector2D } from "bt-engine/utils"
-import { FLOOR_TILE, Tile, TileObject, WALL_TILE } from "bone-torch/modules/tiles"
+import { FLOOR_TILE, Tile, TileObject, WALL_TILE } from "sewerMaster/modules/tiles"
 
 const TILE_ATLAS = new Map<string | number, Tile>([
     [1, WALL_TILE],

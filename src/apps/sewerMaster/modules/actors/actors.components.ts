@@ -7,8 +7,8 @@ import { Component } from "bt-engine/ecs"
 import { Vector2D } from "bt-engine/utils"
 import { GraphicObject, RenderComponent, Sprite } from 'bt-engine/graphics'
 
-import { Item } from "bone-torch/modules/items"
-import { Position } from "bone-torch/components"
+import { Item } from "sewerMaster/modules/items"
+import { Position } from "sewerMaster/components"
 import { AssetManager } from "bt-engine/assets"
 
 

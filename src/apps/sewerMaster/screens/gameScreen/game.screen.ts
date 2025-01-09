@@ -10,11 +10,11 @@ import { renderSystem } from "bt-engine/graphics"
 import { InputManager } from "bt-engine/input"
 import { Entity, System } from "bt-engine/ecs"
 
-import { Player, Settings } from "bone-torch"
-import { TileDrawSystem } from "bone-torch/modules/tiles"
-import { createMap, GameMap } from "bone-torch/modules/map"
-import { Actor, ActionQueue, DrawEntitySystem } from "bone-torch/modules/actors"
-import { TurnSystem } from "bone-torch/modules/actors"
+import { Player, Settings } from "sewerMaster"
+import { TileDrawSystem } from "sewerMaster/modules/tiles"
+import { createMap, GameMap } from "sewerMaster/modules/map"
+import { Actor, ActionQueue, DrawEntitySystem } from "sewerMaster/modules/actors"
+import { TurnSystem } from "sewerMaster/modules/actors"
 
 // 1 = wall
 const mapDataOne = [

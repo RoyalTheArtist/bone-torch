@@ -5,7 +5,7 @@ import { useMapMaker } from '../mapmaker/pages'
 const mapMaker = useMapMaker()
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: { ...createWebHistory('/'),  },
   routes: [
     {
       path: '/',
