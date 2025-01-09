@@ -6,6 +6,9 @@ import { defineConfig } from 'vite'
 
 
 export default defineConfig({
+  base: './',
+  root: './',
+  publicDir: './resources',
   plugins: [
     vue(),
     vueJsx(),
@@ -15,11 +18,9 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, "./src"),
-      '@tools': path.resolve(__dirname, "./tools/src"),
-      'tools': path.resolve(__dirname, "./tools/src"),
+      '@': path.resolve(__dirname, "./game"),
       'bt-engine': path.resolve(__dirname, "./bt-engine"),
-      'sewerMaster': path.resolve(__dirname, "./src/apps/sewerMaster"),
+      '@resources': path.resolve(__dirname, "./resources"),
     }
   }
 })

@@ -27,7 +27,8 @@ export default defineConfig({
     alias: {
       '@': path.resolve(__dirname, "./tools/src"),
       'bt-engine': path.resolve(__dirname, "./bt-engine"),
-      'sewerMaster': path.resolve(__dirname, "./src/apps/sewerMaster"),
+      '@resources': path.resolve(__dirname, "./resources"),
+      'sewerMaster': path.resolve(__dirname, "./game/apps/sewerMaster"),
     }
   }
 })

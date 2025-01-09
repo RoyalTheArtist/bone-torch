@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '@/app/home/HomeView.vue'
 import { useMapMaker } from '../mapmaker/pages'
+import { useSpriteEditor } from '../spriteEditor/pages'
 
 const mapMaker = useMapMaker()
 
@@ -12,7 +13,8 @@ const router = createRouter({
       name: 'home',
       component: HomeView,
     },
-    ...mapMaker.routes
+    ...mapMaker.routes,
+    ...useSpriteEditor().routes
   ],
 })
 
