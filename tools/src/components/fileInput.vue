@@ -34,11 +34,13 @@ const handleLoad = async (elem: HTMLInputElement) => {
 </script>
 
 <template>
-    <slot name="activator" @click="onBrowse"><button type="button" >Browse...</button></slot>
+    <slot name="activator" @click="onBrowse">
+      
+    </slot>
     <label for="input-file">
         <input type="text" name="input-file" readonly :value="file?.name" :placeholder="`${$attrs['placeholder'] || ''}`" @click="onBrowse">
     </label>
-    <input type="file" ref="loadTiles" class="hidden" :accept="`${$attrs['accept']}`" @change="$attrs.onChange">
+    <input type="file" ref="loadTiles" class="display-none" :accept="`${$attrs['accept']}`" @change="$attrs.onChange">
    
 </template>
 

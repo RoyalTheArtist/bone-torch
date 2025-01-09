@@ -28,7 +28,6 @@ export default defineConfig({
       '@': path.resolve(__dirname, "./tools/src"),
       'bt-engine': path.resolve(__dirname, "./bt-engine"),
       '@resources': path.resolve(__dirname, "./resources"),
-      'sewerMaster': path.resolve(__dirname, "./game/apps/sewerMaster"),
     }
   }
 })
