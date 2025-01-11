@@ -1,8 +1,7 @@
 import { Entity } from "bt-engine/ecs"
 
-import { Vector2D, ImpossibleException } from "bt-engine/utils"
+import { Vector2D } from "bt-engine/utils"
 import { Actor } from "@/modules/actors"
-import { PlayerMoveAnimation, RenderAnimation } from "bt-engine/graphics/animations/animations"
 
 export abstract class Action {
     private _parent: Actor | null = null
@@ -33,7 +32,7 @@ export class MoveAction extends Action {
     }
 
     canPerform() {
-        if (!this.requester) return false
+        if (!this.requester || !this.requester.parent) return false
         const map = this.requester.parent
         return map.tileManager.isWalkable(this.moveTo) && map.tileManager.isInBounds(this.moveTo)
      }

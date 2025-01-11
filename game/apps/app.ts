@@ -1,9 +1,8 @@
 import '@/style.scss'
 
-import { Viewport, Surface } from '../../bt-engine/render'
+import { Viewport, makeSurface } from 'bt-engine/render'
 import { Engine } from 'bt-engine'
 import { MainMenuScreen } from './screens'
-import { Vector2D } from 'bt-engine/utils'
 import { AssetManager } from 'bt-engine/assets';
 import { App } from './app.base'
 
@@ -17,8 +16,8 @@ AssetManager.loadSpritesheetManifest('data/spritesheets.json')
 export class BoneTorch extends App {
 
     public start() {
-        const surface = new Surface(new Vector2D(800, 600))
-        const viewport = new Viewport(surface.initialize())
+        const surface = makeSurface(800, 600)
+        const viewport = new Viewport(surface)
         viewport.initialize()
         const engine = new Engine(viewport)
         engine.setScreen(new MainMenuScreen())

@@ -1,5 +1,4 @@
 import { Action } from "./moveActions"
-
 import { Entity } from "bt-engine/ecs"
 import { ImpossibleException } from "bt-engine/utils/"
 
@@ -10,11 +9,10 @@ export type ActionRequest = {
     duration: number
 }
 
-let currentTime = performance.now()
-
 export class ActionQueue {
     static actionQueue: Set<ActionRequest> = new Set()
     static actionsToClear: Map<Entity, number> = new Map()
+    static currentTime = performance.now()
 
     static addAction(entity: Entity, action: Action, duration: number = 0) {
         if (this.actionsToClear.has(entity)) return
@@ -28,7 +26,7 @@ export class ActionQueue {
     }
 
     static processActions(delta: number) {
-        currentTime = performance.now()
+        this.currentTime = performance.now()
         for (let request of this.actionQueue) {
             try {
                 request.action.perform(request.entity)

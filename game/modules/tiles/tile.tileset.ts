@@ -29,6 +29,10 @@ export class TileSet implements IInitialize {
     //         const spritesheet = SpriteSheet.from(tiledata.spritesheet).setAtlas(tiledata.spritesheet.atlas)
     //     } 
     // }
+    
+    public get meta() {
+        return this._meta
+    }
 
     constructor(tileData: ITileSetData, spritesheet: SpriteSheet) {
         this._spritesheet = spritesheet
@@ -60,7 +64,7 @@ export class TileSetManager {
         this._tilesets.set(name, tileset)
     }
 
-    public static build(name: string, data: ITileSetData) {
+    public static build(_name: string, _data: ITileSetData) {
         // const spriteSheet = SpriteSheet.from(data.meta.spritesheet)
         // const tileset = new TileSet()
         // this.addTileSet(name, tileset)

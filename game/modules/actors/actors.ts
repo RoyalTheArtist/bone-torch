@@ -25,17 +25,12 @@ export class Actor extends Entity {
 
     public moveTo(direction: Vector2D) {
         const entityPos = this.getComponent<Position>(Position)
-            
         const newPosition = new Vector2D(entityPos.position.x + direction.x, entityPos.position.y + direction.y)
-
         const curTilePos = new Vector2D(entityPos.position.x * TILE_SIZE.x, Math.floor(entityPos.position.y * TILE_SIZE.y))
         const nextTilePos = new Vector2D(Math.floor(newPosition.x * TILE_SIZE.x), Math.floor(newPosition.y * TILE_SIZE.y))
-        
 
-        const animation = AnimationManager.triggerAnimation(new MoveSpriteAnimation(this, curTilePos, nextTilePos, 100))
+        AnimationManager.triggerAnimation(new MoveSpriteAnimation(this, curTilePos, nextTilePos, 100))
         entityPos.position = newPosition
         this.position = newPosition
-
-       
     }
 }

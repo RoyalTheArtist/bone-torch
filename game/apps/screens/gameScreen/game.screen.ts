@@ -12,38 +12,11 @@ import { Entity } from "bt-engine/ecs"
 
 import { Player } from '@/apps/player'
 import { Settings } from "@/apps/settings"
-import { createMap, GameMap } from "@/modules/map"
+import { GameMap } from "@/modules/map"
 import { Actor, ActionQueue } from "@/modules/actors"
 import { TurnSystem } from "@/modules/actors"
 
 // 1 = wall
-const mapDataOne = [
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 1, 1, 1, 1, 1, 1, 1, 1, 0,
-    0, 1, 0, 0, 0, 0, 0, 0, 1, 0,
-    0, 1, 0, 0, 0, 0, 0, 0, 1, 0,
-    0, 1, 0, 0, 0, 0, 0, 0, 1, 0,
-    0, 1, 0, 0, 0, 0, 0, 0, 1, 0,
-    0, 1, 0, 0, 0, 0, 0, 0, 1, 0,
-    0, 1, 0, 0, 0, 0, 0, 0, 1, 0,
-    0, 1, 1, 1, 1, 1, 1, 1, 1, 0,
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-  ]
-  
-
-const mapDataTwo = [
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 1, 1, 1, 1, 1, 1, 1, 1, 0,
-    0, 1, 0, 0, 0, 0, 0, 0, 1, 0,
-    0, 1, 0, 0, 0, 0, 0, 0, 1, 0,
-    0, 1, 0, 0, 0, 0, 0, 0, 1, 0,
-    0, 1, 0, 0, 0, 0, 0, 0, 1, 0,
-    0, 1, 0, 1, 1, 0, 1, 0, 1, 0,
-    0, 1, 0, 1, 0, 0, 1, 0, 1, 0,
-    0, 1, 1, 1, 1, 1, 1, 1, 1, 0,
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-  ]
-
 const turnSystem = new TurnSystem()
 
 export class GameScreen extends BaseScreen  {
@@ -53,13 +26,12 @@ export class GameScreen extends BaseScreen  {
     private _activeActors: Set<Actor> = new Set()
 
 
-    constructor() {
+    constructor(map: GameMap) {
         super()
+        this._map = map
     }
 
     public initialize(): GameScreen {
-        this._map = createMap(mapDataOne, 10, 10)
-
         const player = Player.spawnPlayerAt(new Vector2D(5, 5))
         player.parent = this._map
         this._entities.add(player)
@@ -76,7 +48,7 @@ export class GameScreen extends BaseScreen  {
     
         const allEntities = new Set([...this._entities, ...this.map.tileManager.tiles])
 
-        turnSystem.query(new Set(this._activeActors))
+        turnSystem.query(this._activeActors)
         //drawEntitySystem.query(new Set(this._entities))
         renderSystem.query(allEntities)
 

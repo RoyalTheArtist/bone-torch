@@ -2,7 +2,7 @@ import { Action, MoveAction } from "@/modules/actors"
 import { StandardGameInput } from "bt-engine/input"
 import { Vector2D } from "bt-engine/utils"
 
-import { InputHandler } from "bt-engine"
+import { InputHandler } from "@/apps/handler.base"
 import { Player } from "@/apps/player"
 
 export class GameInputHandler extends InputHandler { 

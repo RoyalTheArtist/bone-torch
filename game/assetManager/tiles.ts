@@ -1,5 +1,5 @@
 import { Texture } from "bt-engine/graphics/resources/texture"
-import { Tile } from "../maps/map"
+import { Tile } from "../modules/tiles"
 
 
 const allTileSets = new Map<string, TileSet>()

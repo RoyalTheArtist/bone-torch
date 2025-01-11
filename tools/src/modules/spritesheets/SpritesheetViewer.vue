@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { Surface } from 'bt-engine/render';
+import { makeSurface, Surface } from 'bt-engine/render';
 import {  Rect, Vector2D } from 'bt-engine/utils';
 import { onMounted, onUnmounted, useTemplateRef, watch } from 'vue';
-import { MouseHandler } from "bt-engine/input/mouse"
+
 import { Colors } from 'bt-engine/graphics/colors'
+import { MouseHandler } from 'bt-engine/input/mouse';
 
 const target = useTemplateRef('target')
 
@@ -24,10 +25,10 @@ class SpritesheetViewer {
     gridWidth: number = 16
     atlas: Set<Rect> = new Set()
     _img: HTMLImageElement | null = null
-    _selectFn: (rect: Rect) => void | null = null
+    _selectFn: ((rect: Rect) => void) | null = null
 
     constructor(width: number = 500, height: number = 500) {
-        this.surface = new Surface(new Vector2D(width, height)).initialize()
+        this.surface = makeSurface(width, height)
         this.surface.context.imageSmoothingEnabled = false
 
         this.mouse = new MouseHandler()

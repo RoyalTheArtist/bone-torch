@@ -10,6 +10,8 @@ import { RenderComponent } from "bt-engine/graphics"
 
 export class TileDrawComponent implements Component {
   public parent: TileObject
+
+  constructor(parent: TileObject) { this.parent = parent }
   update() {
     this.Draw()
   }
@@ -25,7 +27,7 @@ export class TileDrawComponent implements Component {
 }
 
 export class TileAppearance extends RenderComponent {
-  public parent: TileObject
+  public parent: TileObject | null = null
   private appearance: Appearance
 
   constructor(appearance: Appearance, public readonly dimensions: Vector2D) {
@@ -34,6 +36,7 @@ export class TileAppearance extends RenderComponent {
   }
 
   public get start() {
+    if (!this.parent) return new Vector2D(0, 0)
     return new Vector2D(this.parent.position.x * this.dimensions.x, this.parent.position.y * this.dimensions.y)
   }
 
@@ -57,7 +60,7 @@ export class TileAppearance extends RenderComponent {
 }
 
 export class TileBitmask implements Component {
-  public parent: TileObject
+  public parent: TileObject | null = null
   public value: number
 
   constructor(bitmask: number) {
