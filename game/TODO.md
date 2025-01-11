@@ -1,0 +1,15 @@
+- [ ] Create Rat Entity
+    - [ ] Create Mob AI
+    - [ ] Handle Entity Turns
+- [ ] Create Tools to Create Entity Types
+    - [ ] Define Sprite sheets
+    - [ ] Define mob type (HP, Attack, Defense, etc)
+    - [ ] Associate Appearance to Mob from Spritesheet
+- [ ] Items
+    - [ ] Spawn Items in the World
+    - [ ] Pick up Items
+    - [ ] Use item in Inventory
+- [ ] Combat
+  - [ ] Attack enemies
+- [ ] NPCs
+  - [ ] Talk to NPCs
