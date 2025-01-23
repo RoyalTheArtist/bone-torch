@@ -30,6 +30,7 @@ export class ActionQueue {
         for (let request of this.actionQueue) {
             try {
                 request.action.perform(request.entity)
+                
             } catch (error) {
                 if (error instanceof ImpossibleException) {
                     console.warn(error.message)
@@ -42,7 +43,6 @@ export class ActionQueue {
             }
             this.actionQueue.delete(request)
         }
-
         
         this.clear(delta)
     }

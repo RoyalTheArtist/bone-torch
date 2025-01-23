@@ -5,6 +5,7 @@ import { Tile, TileManager } from "@/modules/tiles"
 import { Vector2D } from "bt-engine/utils"
 import { Actor } from "../actors/actors"
 import { TurnSystem } from "../actors/actors.systems"
+import { Position } from "@/apps/components"
 
 export interface IMapData {
   width: number
@@ -58,10 +59,24 @@ export class GameMap extends Entity implements IInitialize {
   
   isWalkable(position: Vector2D) {
     const tile = this.tiles.getTile(position)
+    if (this.findEntity(position)) {
+      return false
+    }
     if (tile) {
       return tile.passable
     } 
+    
     return true
+  }
+
+  findEntity(position: Vector2D) {
+    for (const entity of this._entities) {
+      const positionComponent = entity.getComponent<Position>(Position)
+      if (positionComponent.position.x === position.x && positionComponent.position.y === position.y) {
+        return entity
+      }
+    }
+    return null
   }
 
   isInBounds(position: Vector2D) {

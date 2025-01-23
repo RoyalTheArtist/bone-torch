@@ -1,25 +1,44 @@
 import { Entity, System } from 'bt-engine/ecs'
 import { AI } from './ai'
-import { ActionQueue, MoveAction } from './actions'
+import { ActionQueue, MoveAction, NoAction } from './actions'
 import { Actor } from './actors'
 
 
 export class TurnSystem extends System {
     public componentsRequired = new Set([AI])
+    private queue: Set<AI> = new Set()
+    private currentTurn: AI | null = null
+    private tookTurn: Set<AI> = new Set()
     public query(entities: Set<Entity>): void {
         for (const entity of entities) {
-            if (entity.hasAll(this.componentsRequired)) {
+            if (entity.hasAll(this.componentsRequired) && !this.queue.has(entity.getComponent(AI)) && !this.tookTurn.has(entity.getComponent(AI))) {
                 this.components.add(entity.getComponent(AI))
+                this.queue.add(entity.getComponent(AI))
             }
+        }
+        if (this.currentTurn === null) {
+            const [first] = this.queue
+            this.currentTurn = first
         }
     }
 
     public update(_delta: number): void {
-        for (const currentTurn of this.components as Set<AI>) {
-            const action = currentTurn.perform(currentTurn.parent)
-            if (action instanceof MoveAction && action.canPerform()) {
-                ActionQueue.addAction(currentTurn.parent as Actor, action, 175)
-            }
+        if (this.currentTurn === null) return
+        const action = this.currentTurn?.perform(this.currentTurn.parent)
+
+        if (action && !(action instanceof NoAction) && action.canPerform(this.currentTurn.parent)) {
+            ActionQueue.addAction(this.currentTurn.parent as Actor, action, 135)
+            this.queue.delete(this.currentTurn)
+            this.tookTurn.add(this.currentTurn)
+            const [nextTurn] = this.queue
+            this.currentTurn = nextTurn
+        }
+
+        if (this.queue.size === 0) {
+            this.queue = this.tookTurn
+            this.tookTurn = new Set()
+            const [first] = this.queue
+            this.currentTurn = first
         }
     }
 }

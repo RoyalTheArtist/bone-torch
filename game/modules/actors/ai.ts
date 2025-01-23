@@ -1,6 +1,7 @@
 import { Component } from "bt-engine/ecs"
-import { Action, NoAction } from "./actions"
+import { Action, MoveAction, NoAction } from "./actions"
 import { Actor } from "./actors"
+import { Vector2D } from "bt-engine/utils/vectors"
 
 export class AI implements Component {
     public parent: Actor
@@ -8,5 +9,22 @@ export class AI implements Component {
     constructor(parent: Actor) { this.parent = parent }
     public  initialize(): void {}
     public  update(_delta: number): void {}
-    public  perform(_entity: Actor): Action { return new NoAction() }
+    public  perform(_entity: Actor): Action | null { return new NoAction() }
+}
+
+const RandomNumber = (min: number, max: number) => Math.round(Math.random() * (max - min) + min)
+
+export class RandomMovementAI extends AI {
+    constructor(parent: Actor) { super(parent) }
+    public initialize(): void {
+    }
+    public update(_delta: number): void {
+        
+    }
+    public perform(entity: Actor): Action {
+        const direction = new Vector2D(RandomNumber(-1, 1), RandomNumber(-1, 1))
+        const action = new MoveAction(direction)
+        action.requester = entity
+        return action
+    }
 }

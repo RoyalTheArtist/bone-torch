@@ -1,6 +1,6 @@
-- [ ] Create Rat Entity
-    - [ ] Create Mob AI
-    - [ ] Handle Entity Turns
+- [X] Create Rat Entity
+    - [X] Create Mob AI
+    - [X] Handle Entity Turns
 - [ ] Create Tools to Create Entity Types
     - [ ] Define Sprite sheets
     - [ ] Define mob type (HP, Attack, Defense, etc)

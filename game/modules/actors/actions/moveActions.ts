@@ -1,6 +1,6 @@
 import { Entity } from "bt-engine/ecs"
 
-import { Vector2D } from "bt-engine/utils"
+import { ImpossibleException, Vector2D } from "bt-engine/utils"
 import { Actor } from "@/modules/actors"
 
 export abstract class Action {
@@ -9,8 +9,8 @@ export abstract class Action {
     public get requester(): Actor | null { return this._parent }
     public set requester(parent: Actor) { this._parent = parent }
 
-    abstract perform(entity: Entity): void
-    abstract canPerform(): {}
+    abstract perform(actor: Entity): void
+    abstract canPerform(actor: Actor): {}
 }
 
 export class NoAction extends Action {
@@ -28,6 +28,7 @@ export class MoveAction extends Action {
         return new Vector2D(this.requester.position.x + this.direction.x, this.requester.position.y + this.direction.y)
     }
     perform(entity: Actor) {
+        if (!this.canPerform()) throw new ImpossibleException("Can't move there")
         entity.moveTo(this.direction)
     }
 
@@ -39,6 +40,48 @@ export class MoveAction extends Action {
      }
 }
 
+export abstract class ActionWithDirection extends Action { 
+    constructor(public dest: Vector2D) { 
+        super()
+    }
+
+    
+    abstract perform(entity: Entity): void
+}
+
+export class MeleeAction extends ActionWithDirection {
+    canPerform(): {} {
+        return true
+    }
+    perform(entity: Actor) {
+        if (!entity.parent) return new NoAction()
+        const map = entity.parent 
+        const target = map.findEntity(new Vector2D(entity.position.x + this.dest.x, entity.position.y + this.dest.y))
+        if (!target) return new NoAction()
+        console.info("Attacked target", target)
+    }
+}
+
+export class BumpAction extends ActionWithDirection {
+    canPerform(actor: Actor): {} {
+        const map = actor.parent
+        if (!map) return false
+        const destination = new Vector2D(actor.position.x + this.dest.x, actor.position.y + this.dest.y)
+        return map.isWalkable(destination) && map.isInBounds(destination)
+    }
+    perform(entity: Actor) {
+        if (!entity.parent) return new NoAction()
+        const map = entity.parent 
+        const dest = new Vector2D(entity.position.x + this.dest.x, entity.position.y + this.dest.y)
 
 
+        if (map.findEntity(dest)) {
+            return new MeleeAction(this.dest).perform(entity)
+        } else {
+            const moveAction = new MoveAction(this.dest)
+            moveAction.requester = entity
+            return moveAction.perform(entity)
+        }
+    }
+}
 
