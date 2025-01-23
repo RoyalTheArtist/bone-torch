@@ -34,7 +34,8 @@ export class MoveAction extends Action {
     canPerform() {
         if (!this.requester || !this.requester.parent) return false
         const map = this.requester.parent
-        return map.tileManager.isWalkable(this.moveTo) && map.tileManager.isInBounds(this.moveTo)
+        
+        return map.isWalkable(this.moveTo) && map.isInBounds(this.moveTo)
      }
 }
 

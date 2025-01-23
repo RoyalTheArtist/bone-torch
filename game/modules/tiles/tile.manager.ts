@@ -71,17 +71,4 @@ export class TileManager {
       }
       return tiles
     }
-  
-    isWalkable(position: Vector2D) {
-      const tile = this.getTile(position)
-      if (tile) {
-        return tile.passable
-      } else {
-        return true
-      }
-    }
-  
-    isInBounds(position: Vector2D) {
-      return position.x >= 0 && position.x < this.dimensions.x && position.y >= 0 && position.y < this.dimensions.y
-    }
   }

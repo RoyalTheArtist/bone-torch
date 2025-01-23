@@ -35,6 +35,19 @@ const mapDataOne = [
 //     0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 //   ]
 
+const mapDataThree = [
+    1, 1, 0, 1, 1, 1, 1, 1, 1, 1,
+    1, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+    1, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+    1, 0, 0, 1, 0, 0, 1, 0, 0, 1,
+    1, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+    1, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+    1, 0, 0, 1, 0, 0, 1, 0, 0, 1,
+    1, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+    1, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+]
+
 export class MainMenuScreen extends BaseScreen {
     initialize() {
         
@@ -42,7 +55,7 @@ export class MainMenuScreen extends BaseScreen {
     update(_delta: number) {
         const inputs = InputManager.getInputs(Settings.keyboardMappings.mainMenu)
         if (inputs.actions.has("new_game") && inputs.actions.get("new_game") === "pressed") {
-            const map = createMap(mapDataOne, 10, 10)
+            const map = createMap(mapDataThree, 10, 10)
             return new GameScreen(map).initialize()
         }
         

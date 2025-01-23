@@ -67,7 +67,7 @@ export function createEmptyMap(size: Vector2D) {
  */
 export function loadMap(mapData: IMapData) {
     const map = new GameMap(new Vector2D(mapData.width, mapData.height))
-    map.tileManager.setTiles(createTiles(mapData.tiles, new Vector2D(mapData.width, mapData.height)))  
+    map.tiles.setTiles(createTiles(mapData.tiles, new Vector2D(mapData.width, mapData.height)))  
     return map
 }
 

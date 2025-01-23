@@ -14,7 +14,7 @@ export class TurnSystem extends System {
         }
     }
 
-    public update(): void {
+    public update(_delta: number): void {
         for (const currentTurn of this.components as Set<AI>) {
             const action = currentTurn.perform(currentTurn.parent)
             if (action instanceof MoveAction && action.canPerform()) {
