@@ -6,16 +6,21 @@ import { Settings } from "@/apps/settings";
 import { Position } from "@/apps/components";
 import { MoveSpriteAnimation } from "@/modules/animations";
 
-import { Inventory } from "./actors.components";
+import { ActorAppearance, Inventory } from "./actors.components";
 import { AnimationManager } from "bt-engine/graphics/animations";
+import { RandomMovementAI } from "./ai";
 
 
 const TILE_SIZE = Settings.tiles.size
 
 export class Actor extends Entity {
     parent: GameMap | null = null
-    constructor(public position: Vector2D) {
-        super();
+    name: string = "Unnamed Actor"
+    public get position() {
+        if (this.hasComponent(Position)) {
+            return this.getComponent<Position>(Position).position
+        }
+        return new Vector2D(0, 0)
     }
 
     public initialize(): void {
@@ -31,6 +36,16 @@ export class Actor extends Entity {
 
         AnimationManager.triggerAnimation(new MoveSpriteAnimation(this, curTilePos, nextTilePos, 100))
         entityPos.position = newPosition
-        this.position = newPosition
+        //this.position = newPosition
+    }
+
+    static spawnRat(position: Vector2D) {
+        const rat = new Actor()
+        rat.name = "rat"
+        rat.addComponent(new Position(position))
+        rat.addComponent(new ActorAppearance({ shape: "circle", resource: "sewers", sprite: "rat" }))
+        rat.addComponent(new RandomMovementAI(rat))
+        rat.initialize()
+        return rat
     }
 }

@@ -34,23 +34,15 @@ export class GameScreen extends BaseScreen  {
         player.parent = this._map
 
 
-        const rat = new Actor(new Vector2D(7, 7))
-        rat.addComponent(new Position(new Vector2D(7,7)))
-        rat.addComponent(new ActorAppearance({ shape: "circle", resource: "sewers", sprite: "rat" }))
-        rat.addComponent(new RandomMovementAI(rat))
-        rat.initialize()
+        const rat = Actor.spawnRat(new Vector2D(7, 7))
         rat.parent = this._map
 
-        const rat2 = new Actor(new Vector2D(2, 2))
-        rat2.addComponent(new Position(new Vector2D(2,2)))
-        rat2.addComponent(new ActorAppearance({ shape: "circle", resource: "sewers", sprite: "rat" }))
-        rat2.addComponent(new RandomMovementAI(rat2))
-        rat2.initialize()
-        rat2.parent = this._map
+        const rat2 = Actor.spawnRat(new Vector2D(2, 2))
+       
 
         this.map.addActor(player)
         this.map.addActor(rat)
-        // this.map.addActor(rat2)
+        this.map.addActor(rat2)
 
         SurfaceLayer.setZoom(2)
 

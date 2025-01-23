@@ -36,7 +36,7 @@ export class MoveAction extends Action {
         if (!this.requester || !this.requester.parent) return false
         const map = this.requester.parent
         
-        return map.isWalkable(this.moveTo) && map.isInBounds(this.moveTo)
+        return map.isWalkable(this.moveTo) && map.isInBounds(this.moveTo) && !map.findEntity(this.moveTo)
      }
 }
 
@@ -57,8 +57,8 @@ export class MeleeAction extends ActionWithDirection {
         if (!entity.parent) return new NoAction()
         const map = entity.parent 
         const target = map.findEntity(new Vector2D(entity.position.x + this.dest.x, entity.position.y + this.dest.y))
-        if (!target) return new NoAction()
-        console.info("Attacked target", target)
+        if (!target) throw new ImpossibleException("cannot attack the air")
+        console.info(`Attacking ${target.name}`)
     }
 }
 

@@ -47,9 +47,10 @@ export class PlayerAI extends AI {
 }
 
 export const spawnPlayer = (position: Vector2D) => {
-    const player = new Actor(position)
+    const player = new Actor()
     player.initialize()
     player.addComponent(new PlayerAI(player))
     player.addComponent(new ActorAppearance({ shape: "circle", resource: "sewers", sprite: "adventurer" }))
+    player.addComponent(new Position(position))
     return player
 }

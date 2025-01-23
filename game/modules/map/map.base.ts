@@ -59,13 +59,9 @@ export class GameMap extends Entity implements IInitialize {
   
   isWalkable(position: Vector2D) {
     const tile = this.tiles.getTile(position)
-    if (this.findEntity(position)) {
-      return false
-    }
     if (tile) {
       return tile.passable
     } 
-    
     return true
   }
 
