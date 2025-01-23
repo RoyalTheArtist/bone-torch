@@ -6,6 +6,7 @@ import { Vector2D } from "bt-engine/utils"
 import { Actor } from "../actors/actors"
 import { TurnSystem } from "../actors/actors.systems"
 import { Position } from "@/apps/components"
+import { CombatSystem } from "../combat/fighter"
 
 export interface IMapData {
   width: number
@@ -14,6 +15,7 @@ export interface IMapData {
 }
 
 const turnSystem = new TurnSystem()
+const combatSystem = new CombatSystem()
 
 
 export class GameMap extends Entity implements IInitialize {
@@ -48,7 +50,10 @@ export class GameMap extends Entity implements IInitialize {
 
   public update(delta: number) { 
     turnSystem.query(this._activeActors)
-    turnSystem.update(delta)       
+    combatSystem.query(this._entities)
+
+    turnSystem.update(delta)
+    combatSystem.update(delta)
   }
 
   addActor(entity: Actor) {

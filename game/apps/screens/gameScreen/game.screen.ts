@@ -12,10 +12,7 @@ import { InputManager } from "bt-engine/input"
 import { Player } from '@/apps/player'
 import { Settings } from "@/apps/settings"
 import { GameMap } from "@/modules/map"
-import { Actor, ActionQueue, RandomMovementAI } from "@/modules/actors"
-
-import { ActorAppearance } from "@/modules/actors/actors.components"
-import { Position } from "@/apps/components"
+import { Actor, ActionQueue } from "@/modules/actors"
 import { SurfaceLayer } from "bt-engine/render"
 
 // 1 = wall

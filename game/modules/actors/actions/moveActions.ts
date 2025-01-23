@@ -2,6 +2,7 @@ import { Entity } from "bt-engine/ecs"
 
 import { ImpossibleException, Vector2D } from "bt-engine/utils"
 import { Actor } from "@/modules/actors"
+import { TakeDamage } from "@/modules/combat/fighter"
 
 export abstract class Action {
     private _parent: Actor | null = null
@@ -58,7 +59,8 @@ export class MeleeAction extends ActionWithDirection {
         const map = entity.parent 
         const target = map.findEntity(new Vector2D(entity.position.x + this.dest.x, entity.position.y + this.dest.y))
         if (!target) throw new ImpossibleException("cannot attack the air")
-        console.info(`Attacking ${target.name}`)
+        
+        target.addComponent(new TakeDamage(entity, 5))
     }
 }
 

@@ -16,14 +16,14 @@ export class TurnSystem extends System {
                 this.queue.add(entity.getComponent(AI))
             }
         }
-        if (this.currentTurn === null) {
-            const [first] = this.queue
-            this.currentTurn = first
-        }
     }
 
     public update(_delta: number): void {
-        if (this.currentTurn === null) return
+        if (!this.currentTurn) {
+            const [first] = this.queue
+            this.currentTurn = first
+        }
+
         const action = this.currentTurn?.perform(this.currentTurn.parent)
 
         if (action && !(action instanceof NoAction) && action.canPerform(this.currentTurn.parent)) {
@@ -35,10 +35,8 @@ export class TurnSystem extends System {
         }
 
         if (this.queue.size === 0) {
-            this.queue = this.tookTurn
+            this.queue = new Set(this.tookTurn)
             this.tookTurn = new Set()
-            const [first] = this.queue
-            this.currentTurn = first
         }
     }
 }

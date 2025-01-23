@@ -2,6 +2,7 @@ import { Action, Actor, AI, NoAction } from "../modules/actors"
 import { Vector2D } from "bt-engine/utils"
 import { Position } from "./components"
 import { ActorAppearance } from "../modules/actors/actors.components"
+import { Fighter } from "@/modules/combat/fighter"
 
 export class Player {
     private static _nextTurn: Action | null = null
@@ -48,9 +49,11 @@ export class PlayerAI extends AI {
 
 export const spawnPlayer = (position: Vector2D) => {
     const player = new Actor()
+    player.name = "You"
     player.initialize()
     player.addComponent(new PlayerAI(player))
     player.addComponent(new ActorAppearance({ shape: "circle", resource: "sewers", sprite: "adventurer" }))
     player.addComponent(new Position(position))
+    player.addComponent(new Fighter(100))
     return player
 }

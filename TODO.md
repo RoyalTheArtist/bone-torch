@@ -9,7 +9,7 @@
     - [ ] Spawn Items in the World
     - [ ] Pick up Items
     - [ ] Use item in Inventory
-- [ ] Combat
-  - [ ] Attack enemies
+- [X] Combat
+  - [X] Attack enemies
 - [ ] NPCs
   - [ ] Talk to NPCs
