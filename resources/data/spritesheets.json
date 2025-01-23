@@ -7,11 +7,12 @@
             }
         },
         "atlas": {
-            "grass": [0, 0],
+            "grass": [3, 0],
             "brick": [1, 0],
             "rat": [0,1],
             "adventurer": [1, 1],
-            "goblin": [2, 1]
+            "goblin": [2, 1],
+            "scroll": [0, 2]
         }
     }
 }

@@ -17,7 +17,8 @@ export const Settings = Object.freeze({
             e: ['move_up_right', 'inventory_scroll_up_right'],
             z: ['move_down_left', 'inventory_scroll_down_left'],
             c: ['move_down_right', 'inventory_scroll_down_right'],
-            i: ['open_inventory']
+            i: ['open_inventory'],
+            p: ['pickup_item']
         },
         mainMenu: {
             n: ['new_game'],

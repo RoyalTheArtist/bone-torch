@@ -4,6 +4,7 @@ import { Vector2D } from "bt-engine/utils"
 
 import { InputHandler } from "@/apps/handler.base"
 import { Player } from "@/apps/player"
+import { PickupAction } from "@/modules/actors/actions/pickupActions"
 
 export class GameInputHandler extends InputHandler { 
     handleInput(input: StandardGameInput): Action | null {
@@ -47,6 +48,11 @@ export class GameInputHandler extends InputHandler {
 
         if (input.actions.has("open_inventory") && input.actions.get("open_inventory") === "pressed") {
             console.log("open inventory")
+        }
+
+        if (input.actions.get('pickup_item') === "pressed") {
+            if (!Player.player) return null
+            Player.setNextTurn(new PickupAction(new Vector2D(Player.player.position.x, Player.player.position.y)))
         }
 
         return null

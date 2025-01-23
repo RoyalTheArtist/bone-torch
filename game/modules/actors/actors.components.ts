@@ -3,7 +3,7 @@ import { Actor } from "./actors"
 
 import { SurfaceLayer } from "../../../bt-engine/render"
 
-import { Component } from "bt-engine/ecs"
+import { Component, Entity } from "bt-engine/ecs"
 import { Vector2D } from "bt-engine/utils"
 import { GraphicObject, RenderComponent, Sprite } from 'bt-engine/graphics'
 
@@ -11,9 +11,6 @@ import { Item } from "@/modules/items"
 
 import { AssetManager } from "bt-engine/assets"
 import { Position } from "@/apps/components"
-
-
-
 
 class CircleSprite extends Sprite {
 
@@ -65,14 +62,32 @@ export class ActorAppearance extends RenderComponent {
     }
 
     public update() { 
-        //this.draw()
         if (!this.parent || !this.sprite) return
-        const position = this.parent.getComponent<Position>(Position)
-        if (!SurfaceLayer.foreground.objects.has(this.parent)) {
-            SurfaceLayer.foreground.objects.set(this.parent, new GraphicObject(this.sprite, new Vector2D(position.position.x * 16, position.position.y * 16), "foreground"))
+        if (!this.parent.hasComponent(Position) && SurfaceLayer.foreground.objects.has(this.parent)) {
+            SurfaceLayer.foreground.objects.delete(this.parent)
+            return
         }
+
+        if (SurfaceLayer.foreground.objects.has(this.parent)) return
+        const position = this.parent.getComponent<Position>(Position)
+        const object = GraphicsObjects.get(this.parent, this.sprite, position)
+        SurfaceLayer.foreground.objects.set(this.parent, object)
     }
     
+}
+
+class GraphicsObjects {
+    static objects = new Map<Entity, GraphicObject>()
+
+    static get(entity: Entity, sprite: Sprite, position: Position): GraphicObject {
+        if (this.objects.has(entity)) {
+            return this.objects.get(entity) as GraphicObject
+        }
+
+        const newObject = new GraphicObject(sprite, new Vector2D(position.position.x * 16, position.position.y * 16), "foreground")
+        this.objects.set(entity, newObject)
+        return newObject
+    }
 }
 
 export class Inventory extends Component {

@@ -33,11 +33,16 @@ export class MoveAction extends Action {
         entity.moveTo(this.direction)
     }
 
+    /**
+     * Checks if the move is valid. That is, if the target destination is within the map's bounds
+     * and there is no entity blocking the path.
+     * @returns {boolean} true if the move is valid, false otherwise
+     */
     canPerform() {
         if (!this.requester || !this.requester.parent) return false
         const map = this.requester.parent
         
-        return map.isWalkable(this.moveTo) && map.isInBounds(this.moveTo) && !map.findEntity(this.moveTo)
+        return map.isWalkable(this.moveTo) && map.isInBounds(this.moveTo) && !map.entityBlocks(this.moveTo)
      }
 }
 
@@ -77,7 +82,7 @@ export class BumpAction extends ActionWithDirection {
         const dest = new Vector2D(entity.position.x + this.dest.x, entity.position.y + this.dest.y)
 
 
-        if (map.findEntity(dest)) {
+        if (map.entityBlocks(dest)) {
             return new MeleeAction(this.dest).perform(entity)
         } else {
             const moveAction = new MoveAction(this.dest)

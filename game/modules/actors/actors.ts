@@ -10,6 +10,7 @@ import { ActorAppearance, Inventory } from "./actors.components";
 import { AnimationManager } from "bt-engine/graphics/animations";
 import { RandomMovementAI } from "./ai";
 import { Fighter } from "@/modules/combat/fighter";
+import { BlocksMovement } from "@/lib/components";
 
 
 const TILE_SIZE = Settings.tiles.size
@@ -47,6 +48,7 @@ export class Actor extends Entity {
         rat.addComponent(new ActorAppearance({ shape: "circle", resource: "sewers", sprite: "rat" }))
         rat.addComponent(new RandomMovementAI(rat))
         rat.addComponent(new Fighter(10))
+        rat.addComponent(new BlocksMovement)
         rat.initialize()
         return rat
     }

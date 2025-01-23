@@ -14,6 +14,7 @@ import { Settings } from "@/apps/settings"
 import { GameMap } from "@/modules/map"
 import { Actor, ActionQueue } from "@/modules/actors"
 import { SurfaceLayer } from "bt-engine/render"
+import { Item } from "@/modules/items/items.base"
 
 // 1 = wall
 
@@ -36,12 +37,15 @@ export class GameScreen extends BaseScreen  {
 
         const rat2 = Actor.spawnRat(new Vector2D(2, 2))
        
+        const healingScroll = Item.makeScroll(new Vector2D(2, 5))
+        this.map.addEntity(healingScroll)
+
 
         this.map.addActor(player)
         this.map.addActor(rat)
         this.map.addActor(rat2)
 
-        SurfaceLayer.setZoom(2)
+        SurfaceLayer.setZoom(3)
 
         return this
     }

@@ -5,9 +5,10 @@
     - [ ] Define Sprite sheets
     - [ ] Define mob type (HP, Attack, Defense, etc)
     - [ ] Associate Appearance to Mob from Spritesheet
-- [ ] Items
-    - [ ] Spawn Items in the World
-    - [ ] Pick up Items
+- [X] Items
+    - [X] Spawn Items in the World
+    - [X] Pick up Items
+    - [ ] Browse Inventory
     - [ ] Use item in Inventory
 - [X] Combat
   - [X] Attack enemies
